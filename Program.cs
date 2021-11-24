@@ -23,6 +23,10 @@ namespace Project_Cautious
             Enemy enemy = new Enemy();
             cast["enemies"].Add(enemy);
 
+            cast["bullets"] = new List<Actor>();
+            Bullet bullet = new Bullet();
+            cast["bullets"].Add(bullet);
+
             // Create the script
             Dictionary<string, List<Action>> script = new Dictionary<string, List<Action>>();
 

@@ -10,6 +10,8 @@ namespace Project_Cautious.Cast{
         protected bool _playerFriendly;
         public Bullet(){
             SetPosition(new Point(Constants.MAX_X / 2, Constants.MAX_Y / 2));
+            SetWidth(Constants.DEFAULT_SQUARE_SIZE/2);
+            SetHeight(Constants.DEFAULT_SQUARE_SIZE/2);
             _color = Raylib_cs.Color.WHITE;
         }
     }
