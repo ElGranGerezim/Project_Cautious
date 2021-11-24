@@ -5,7 +5,7 @@ using Project_Cautious.Cast.Basics;
 namespace Project_Cautious.Services{
     public class PhysicsService{
         public PhysicsService(){
-            throw new NotImplementedException();
+            //TODO: Write Physics Service
         }
     }
 }

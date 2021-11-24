@@ -65,9 +65,9 @@ namespace Project_Cautious.Services{
         /// <param name="y"></param>
         /// <param name="width"></param>
         /// <param name="height"></param>
-        public void DrawBox(int x, int y, int width, int height)
+        public void DrawBox(int x, int y, int width, int height, Raylib_cs.Color color)
         {
-            Raylib.DrawRectangle(x, y, width, height, Raylib_cs.Color.BLUE);            
+            Raylib.DrawRectangle(x, y, width, height, color);            
         }
 
         /// <summary>
@@ -121,6 +121,7 @@ namespace Project_Cautious.Services{
             int y = actor.GetY();
             int width = actor.GetWidth();
             int height = actor.GetHeight();
+            Raylib_cs.Color color = actor.GetColor();
 
 
             if (actor.HasImage())
@@ -136,7 +137,7 @@ namespace Project_Cautious.Services{
             }
             else
             {
-                DrawBox(x, y, width, height);
+                DrawBox(x, y, width, height, color);
             }
         }
 

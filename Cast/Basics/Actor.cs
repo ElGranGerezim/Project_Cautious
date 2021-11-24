@@ -15,6 +15,8 @@ namespace Project_Cautious.Cast.Basics{
         protected string _text = "";
         private string _image = "";
 
+        protected Raylib_cs.Color _color = Raylib_cs.Color.BLUE;
+
         public Actor()
         {
             // Start these at 0, 0 by default
@@ -126,6 +128,10 @@ namespace Project_Cautious.Cast.Basics{
         public void SetVelocity(Point newVelocity)
         {
             _velocity = newVelocity;
+        }
+
+        public Raylib_cs.Color GetColor(){
+            return _color;
         }
 
         public void MoveNext()

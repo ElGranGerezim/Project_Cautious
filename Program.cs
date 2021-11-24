@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Project_Cautious;
+using Project_Cautious.Cast;
 using Project_Cautious.Cast.Basics;
 using Project_Cautious.Script;
 using Project_Cautious.Services;
@@ -13,6 +14,14 @@ namespace Project_Cautious
         {
             // Create the cast
             Dictionary<string, List<Actor>> cast = new Dictionary<string, List<Actor>>();
+
+            cast["player"] = new List<Actor>();
+            Player player = new Player();
+            cast["player"].Add(player);
+            
+            cast["enemies"] = new List<Actor>();
+            Enemy enemy = new Enemy();
+            cast["enemies"].Add(enemy);
 
             // Create the script
             Dictionary<string, List<Action>> script = new Dictionary<string, List<Action>>();

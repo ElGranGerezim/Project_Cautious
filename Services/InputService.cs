@@ -5,7 +5,7 @@ using Project_Cautious.Cast.Basics;
 namespace Project_Cautious.Services{
     public class InputService{
         public InputService(){
-            throw new NotImplementedException();
+            // TODO write inputService
         }
     }
 }
