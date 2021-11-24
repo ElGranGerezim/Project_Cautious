@@ -5,6 +5,9 @@ using Project_Cautious.Cast.Basics;
 
 namespace Project_Cautious.Script{
     public class HandleCollisionsAction : Action{
+        /// <summary>
+        /// Action to determine collisions between actors.
+        /// </summary>
         PhysicsService _physicsService;
         AudioService _audioService;
 

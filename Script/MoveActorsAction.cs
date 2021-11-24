@@ -6,7 +6,7 @@ using Project_Cautious.Services;
 namespace Project_Cautious.Script
 {
     /// <summary>
-    /// An action to draw all of the actors in the game.
+    /// An action to move all of the actors in the game according to their stored velocity.
     /// </summary>
     public class MoveActorsAction : Action
     {

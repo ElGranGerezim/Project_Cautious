@@ -24,7 +24,6 @@ namespace Project_Cautious.Cast.Basics{
             _velocity = new Point(0, 0);
         }
 
-
         public void SetImage(string image)
         {
             _image = image;

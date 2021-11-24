@@ -5,6 +5,9 @@ using Raylib_cs;
 
 namespace Project_Cautious.Script{
     public class ControlActorsAction : Action {
+        /// <summary>
+        /// Action to convert user input to player action.
+        /// </summary>
         public ControlActorsAction(){
 
         }
