@@ -49,6 +49,8 @@ namespace Project_Cautious
             script["input"].Add(controlActorsAction);
             HandleCollisionsAction handleCollisionsAction = new HandleCollisionsAction(physicsService, audioService);
             script["update"].Add(handleCollisionsAction);
+            HandleOffScreenAction handleOffScreenAction = new HandleOffScreenAction();
+            script["update"].Add(handleOffScreenAction);
 
             // Start up the game
             outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y, "Project Cautious", Constants.FRAME_RATE);
