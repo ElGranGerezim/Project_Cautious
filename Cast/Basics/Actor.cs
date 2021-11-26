@@ -124,7 +124,7 @@ namespace Project_Cautious.Cast.Basics{
             return _velocity;
         }
 
-        public void SetVelocity(Point newVelocity)
+        public virtual void SetVelocity(Point newVelocity)
         {
             _velocity = newVelocity;
         }

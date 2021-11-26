@@ -40,6 +40,13 @@ namespace Project_Cautious.Cast.Basics{
             return new Point(newX, newY);
         }
 
+        public Point Multiply(Point other){
+            int newX = _x * other._x;
+            int newY = _y * other._y;
+
+            return new Point(newX, newY);
+        }
+
         /// <summary>
         /// Returns a new point that is the reversed version of this one.
         /// Both X and Y are multiplied by -1.
