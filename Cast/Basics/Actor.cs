@@ -6,6 +6,7 @@ namespace Project_Cautious.Cast.Basics{
     /// </summary>
     public class Actor
     {
+        protected bool _isVisible;
         protected Point _position;
         protected Point _velocity;
 
@@ -13,7 +14,8 @@ namespace Project_Cautious.Cast.Basics{
         protected int _height = 0;
 
         protected string _text = "";
-        private string _image = "";
+        protected string _image = "";
+        protected string _subtitle = "";
 
         protected Raylib_cs.Color _color = Raylib_cs.Color.BLUE;
 
@@ -42,6 +44,18 @@ namespace Project_Cautious.Cast.Basics{
         public bool HasText()
         {
             return _text != "";
+        }
+
+        public bool HasSubtitle(){
+            return _subtitle != "";
+        }
+
+        private void SetSubtitle(string text){
+            _subtitle = text;
+        }
+
+        public string GetSubtitle(){
+            return _subtitle;
         }
 
         public bool HasBox()
@@ -128,6 +142,10 @@ namespace Project_Cautious.Cast.Basics{
         {
             _velocity = newVelocity;
         }
+        
+        public virtual bool GetIsVisible(){
+            return _isVisible;
+        }
 
         public Raylib_cs.Color GetColor(){
             return _color;
@@ -156,6 +174,8 @@ namespace Project_Cautious.Cast.Basics{
 
             _position = new Point(newX, newY);
         }
+
+        public virtual bool canGetHit(){ return false; }
 
         public override string ToString()
         {

@@ -81,5 +81,9 @@ namespace Project_Cautious.Services{
             
             return new Point(x, y);
         }
+
+        public bool IsContinuePressed(){
+            return Raylib.IsKeyDown(key.KEY_ENTER);
+        }
     }
 }

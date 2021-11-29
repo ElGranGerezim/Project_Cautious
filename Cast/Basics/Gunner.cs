@@ -7,7 +7,7 @@ namespace Project_Cautious.Cast{
     /// </summary>
     public class Gunner : Actor {
         public Gunner(){
-
+            _isVisible = true;
         }
 
         protected int _health;
@@ -15,6 +15,8 @@ namespace Project_Cautious.Cast{
         public virtual void TakeDamage(){}
 
         public virtual void Attack(){}
+
+        public int GetHealth(){return _health;}
 
     }
 }

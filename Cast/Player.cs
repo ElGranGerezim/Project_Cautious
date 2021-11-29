@@ -10,6 +10,8 @@ namespace Project_Cautious.Cast{
         private bool _focusing = false;
 
         public Player(){
+            _health = 1;
+            _subtitle = "Player";
             SetWidth(Constants.DEFAULT_SQUARE_SIZE);
             SetHeight(Constants.DEFAULT_SQUARE_SIZE);
             SetPosition(new Point(Constants.MAX_X / 2, Constants.MAX_Y - _height * 2));
@@ -17,12 +19,17 @@ namespace Project_Cautious.Cast{
 
         public override void TakeDamage()
         {
-            
+            _health--;
         }
 
         public override void Attack()
         {
             
+        }
+
+        public override bool canGetHit()
+        {
+            return true;
         }
 
         public void setShouldFire(bool attackInput){

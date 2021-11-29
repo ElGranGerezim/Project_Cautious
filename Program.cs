@@ -27,6 +27,10 @@ namespace Project_Cautious
             Bullet bullet = new Bullet();
             cast["bullets"].Add(bullet);
 
+            cast["banners"] = new List<Actor>();
+            Banner endBanner = new Banner(false, "GAME OVER");
+            cast["banners"].Add(endBanner);
+
             // Create the script
             Dictionary<string, List<Action>> script = new Dictionary<string, List<Action>>();
 
@@ -38,6 +42,7 @@ namespace Project_Cautious
             script["output"] = new List<Action>();
             script["input"] = new List<Action>();
             script["update"] = new List<Action>();
+            script["end"] = new List<Action>();
 
             DrawActorsAction drawActorsAction = new DrawActorsAction(outputService);
             script["output"].Add(drawActorsAction);
@@ -51,6 +56,10 @@ namespace Project_Cautious
             script["update"].Add(handleCollisionsAction);
             HandleOffScreenAction handleOffScreenAction = new HandleOffScreenAction();
             script["update"].Add(handleOffScreenAction);
+            KillPlayerAction killPlayerAction = new KillPlayerAction();
+            script["update"].Add(killPlayerAction);
+            EndGameAction endGameAction = new EndGameAction();
+            script["end"].Add(endGameAction);
 
             // Start up the game
             outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y, "Project Cautious", Constants.FRAME_RATE);

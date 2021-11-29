@@ -139,6 +139,14 @@ namespace Project_Cautious.Services{
             {
                 DrawBox(x, y, width, height, color);
             }
+
+            if (actor.HasSubtitle()){
+                bool darkText = true;
+                string subtitle = actor.GetSubtitle();
+                int subX = x + (actor.GetWidth() / 2) - ((subtitle.Length * Constants.DEFAULT_FONT_SIZE) / 2);
+                int subY = y + actor.GetHeight();
+                DrawText(subX, subY, subtitle, darkText);
+            }
         }
 
         /// <summary>
@@ -149,7 +157,9 @@ namespace Project_Cautious.Services{
         {
             foreach (Actor actor in actors)
             {
-                DrawActor(actor);
+                if (actor.GetIsVisible()){
+                    DrawActor(actor);
+                }
             }
         }
 

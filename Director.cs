@@ -41,11 +41,11 @@ namespace Project_Cautious{
                 }
 
                 if (gameOver()){
-                    _keepPlaying = false;
+                    _keepPlaying = endGame();
                 }
             }
 
-            Console.WriteLine("Game over!");
+            
         }
 
         /// <summary>
@@ -63,7 +63,15 @@ namespace Project_Cautious{
         }
 
         public bool gameOver(){
-            //TODO: finish gameOver
+            if (_cast["player"].Count <= 0){ return true; }
+            return false;
+        }
+
+        public bool endGame(){
+            CueAction("end");
+            while(_cast["banners"].Count > 0){
+                
+            }
             return false;
         }
 

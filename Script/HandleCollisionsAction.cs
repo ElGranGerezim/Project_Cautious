@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Raylib_cs;
 using Project_Cautious.Services;
 using Project_Cautious.Cast.Basics;
-
+using Project_Cautious.Cast;
 namespace Project_Cautious.Script{
     public class HandleCollisionsAction : Action{
         /// <summary>
@@ -18,7 +18,19 @@ namespace Project_Cautious.Script{
 
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
-            //TODO: Write HandleCollisions Execute
+            List<Actor> bulletsToRemove = new List<Actor>();
+            foreach (Bullet bullet in cast["bullets"]){
+                foreach (Player player in cast["player"]){
+                    if (_physicsService.IsCollision(player, bullet)){
+                        player.TakeDamage();
+                        bulletsToRemove.Add(bullet);
+                    }
+                }
+            }
+
+            foreach (Bullet bye in bulletsToRemove){
+                cast["bullets"].Remove(bye);
+            }
         }
 
     }

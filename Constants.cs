@@ -8,6 +8,8 @@ namespace Project_Cautious{
         public const int DEFAULT_SQUARE_SIZE = 20;
         public const int DEFAULT_FONT_SIZE = 20;
         public const int DEFAULT_TEXT_OFFSET = 4;
+        public const int DEFAULT_BANNER_WIDTH = 1000;
+        public const int DEFAULT_BANNER_HEIGHT = 250;
 
         public const int DEFAULT_PLAYER_SPEED = 4;
 
