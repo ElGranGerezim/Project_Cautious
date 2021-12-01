@@ -20,7 +20,6 @@ namespace Project_Cautious.Script{
         {
             foreach (Player player in cast["player"]){
                 player.setFocusing(_inputService.IsFocusKeyPressed());
-                player.setShouldFire(_inputService.IsFireKeyPressed());
                 player.SetVelocity(_inputService.GetDirection());
             }
         }

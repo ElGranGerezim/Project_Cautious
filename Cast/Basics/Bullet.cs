@@ -8,9 +8,11 @@ namespace Project_Cautious.Cast.Basics{
     public class Bullet : Actor {
         protected int _damage;
         protected bool _playerFriendly;
-        public Bullet(){
+        public Bullet(Point location, Point velocity, bool playerFriendly = false){
             _isVisible = true;
-            SetPosition(new Point(Constants.MAX_X / 2, Constants.MAX_Y / 2));
+            _playerFriendly = playerFriendly;
+            SetPosition(location);
+            SetVelocity(velocity);
             SetWidth(Constants.DEFAULT_SQUARE_SIZE/2);
             SetHeight(Constants.DEFAULT_SQUARE_SIZE/2);
             _color = Raylib_cs.Color.WHITE;
@@ -19,6 +21,9 @@ namespace Project_Cautious.Cast.Basics{
         public override bool canGetHit()
         {
             return true;
+        }
+        public bool GetPlayerFriendly(){
+            return _playerFriendly;
         }
     }
 }

@@ -24,8 +24,6 @@ namespace Project_Cautious
             cast["enemies"].Add(enemy);
 
             cast["bullets"] = new List<Actor>();
-            Bullet bullet = new Bullet();
-            cast["bullets"].Add(bullet);
 
             cast["banners"] = new List<Actor>();
             Banner endBanner = new Banner(false, "GAME OVER");
@@ -57,8 +55,10 @@ namespace Project_Cautious
             script["update"].Add(handleCollisionsAction);
             HandleOffScreenAction handleOffScreenAction = new HandleOffScreenAction();
             script["update"].Add(handleOffScreenAction);
-            KillPlayerAction killPlayerAction = new KillPlayerAction();
+            RemoveDeadAction killPlayerAction = new RemoveDeadAction();
             script["update"].Add(killPlayerAction);
+            AttackAction attackAction = new AttackAction(inputService);
+            script["update"].Add(attackAction);
             EndGameAction endGameAction = new EndGameAction();
             script["end"].Add(endGameAction);
             PlayAgainInputAction playAgainInputAction = new PlayAgainInputAction(inputService);

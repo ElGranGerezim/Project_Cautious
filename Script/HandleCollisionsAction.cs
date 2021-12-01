@@ -20,10 +20,19 @@ namespace Project_Cautious.Script{
         {
             List<Actor> bulletsToRemove = new List<Actor>();
             foreach (Bullet bullet in cast["bullets"]){
-                foreach (Player player in cast["player"]){
-                    if (_physicsService.IsCollision(player, bullet)){
-                        player.TakeDamage();
-                        bulletsToRemove.Add(bullet);
+                if (bullet.GetPlayerFriendly()){
+                    foreach(Enemy enemy in cast["enemies"]){
+                        if (_physicsService.IsCollision(enemy, bullet)){
+                            enemy.TakeDamage();
+                            bulletsToRemove.Add(bullet);
+                        }
+                    }
+                } else{
+                    foreach (Player player in cast["player"]){
+                        if (_physicsService.IsCollision(player, bullet)){
+                            player.TakeDamage();
+                            bulletsToRemove.Add(bullet);
+                        }
                     }
                 }
             }

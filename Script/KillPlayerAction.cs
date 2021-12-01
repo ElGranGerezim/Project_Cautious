@@ -5,19 +5,31 @@ using Project_Cautious.Cast;
 using Raylib_cs;
 
 namespace Project_Cautious.Script{
-    public class KillPlayerAction : Action{
-        public KillPlayerAction(){}
+    public class RemoveDeadAction : Action{
+        public RemoveDeadAction(){}
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
-            List<Actor> toRemove = new List<Actor>();
+            List<Actor> playerToRemove = new List<Actor>();
+            List<Actor> enemyToRemove = new List<Actor>();
+
             foreach (Player player in cast["player"]){
-                if (player.GetHealth() == 0){
-                    toRemove.Add(player);
+                if (player.GetHealth() <= 0){
+                    playerToRemove.Add(player);
+                }
+            }
+
+            foreach (Enemy enemy in cast["enemies"]){
+                if (enemy.GetHealth() <= 0){
+                    enemyToRemove.Add(enemy);
                 }
             }
             
-            foreach (Actor bye in toRemove){
+            foreach (Actor bye in playerToRemove){
                 cast["player"].Remove(bye);
+            }
+
+            foreach (Actor bye in enemyToRemove){
+                cast["enemies"].Remove(bye);
             }
         }
     }

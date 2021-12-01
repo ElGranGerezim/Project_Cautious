@@ -123,6 +123,10 @@ namespace Project_Cautious.Cast.Basics{
             _height = height;
         }
 
+        public virtual Point GetCenterFire(){
+            return new Point(_position.GetX() + (_width/2), GetBottomEdge());
+        }
+
         public Point GetPosition()
         {
             return _position;
