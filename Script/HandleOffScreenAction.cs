@@ -36,6 +36,9 @@ namespace Project_Cautious.Script
                             actor.SetPosition(new Point(actor.GetPosition().GetX(), Constants.MAX_Y - actor.GetHeight() / 2));
                         }
                     }
+                    else if (actor is Banner){
+                        //Do Nothing
+                    }
                     else{
                         if (actor.GetX() > Constants.MAX_X || actor.GetX() < 0 || actor.GetY() > Constants.MAX_Y || actor.GetY() < 0){
                             toRemove.Add(actor);

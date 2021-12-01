@@ -13,9 +13,9 @@ namespace Project_Cautious.Services{
         private Dictionary<string, Raylib_cs.Texture2D> _textures
             = new Dictionary<string, Raylib_cs.Texture2D>();
 
-        public OutputService()
-        {
+        private Dictionary<string, Raylib_cs.Font> _fonts = new Dictionary<string, Font>();
 
+        public OutputService(){
         }
 
         /// <summary>
@@ -99,15 +99,23 @@ namespace Project_Cautious.Services{
         {
             Raylib_cs.Color color = Raylib_cs.Color.WHITE;
 
+            if (!(_fonts.ContainsKey("./Assets/computo-monospace.otf"))){
+                Raylib_cs.Font loaded = Raylib.LoadFont("./Assets/computo-monospace.otf");
+                _fonts["./Assets/computo-monospace.otf"] = loaded;
+            }
+
             if (darkText)
             {
                 color = Raylib_cs.Color.BLACK;
             }
 
-            Raylib.DrawText(text,
-                x + Constants.DEFAULT_TEXT_OFFSET,
-                y + Constants.DEFAULT_TEXT_OFFSET,
+            System.Numerics.Vector2 location = new System.Numerics.Vector2(x + Constants.DEFAULT_TEXT_OFFSET,
+                y + Constants.DEFAULT_TEXT_OFFSET);
+            Raylib.DrawTextEx(_fonts["./Assets/computo-monospace.otf"],
+                text,
+                location,
                 Constants.DEFAULT_FONT_SIZE,
+                Constants.DEFAULT_TEXT_OFFSET,
                 color);
         }
 
@@ -131,7 +139,7 @@ namespace Project_Cautious.Services{
             }
             else if (actor.HasText())
             {
-                bool darkText = true;
+                bool darkText = false;
                 string text = actor.GetText();
                 DrawText(x, y, text, darkText);
             }
@@ -141,9 +149,9 @@ namespace Project_Cautious.Services{
             }
 
             if (actor.HasSubtitle()){
-                bool darkText = true;
+                bool darkText = false;
                 string subtitle = actor.GetSubtitle();
-                int subX = x + (actor.GetWidth() / 2) - ((subtitle.Length * Constants.DEFAULT_FONT_SIZE) / 2);
+                int subX = x + (actor.GetWidth() / 2) - ((subtitle.Length / 2) * Constants.DEFAULT_FONT_SIZE);
                 int subY = y + actor.GetHeight();
                 DrawText(subX, subY, subtitle, darkText);
             }

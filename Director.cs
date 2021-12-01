@@ -70,7 +70,7 @@ namespace Project_Cautious{
         public bool endGame(){
             CueAction("end");
             while(_cast["banners"].Count > 0){
-                
+                CueAction("output");
             }
             return false;
         }

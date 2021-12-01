@@ -8,13 +8,11 @@ namespace Project_Cautious{
         public const int DEFAULT_SQUARE_SIZE = 20;
         public const int DEFAULT_FONT_SIZE = 20;
         public const int DEFAULT_TEXT_OFFSET = 4;
-        public const int DEFAULT_BANNER_WIDTH = 1000;
-        public const int DEFAULT_BANNER_HEIGHT = 250;
-
+        public const int DEFAULT_BANNER_WIDTH = 420;
+        public const int DEFAULT_BANNER_HEIGHT = 100;
         public const int DEFAULT_PLAYER_SPEED = 4;
-
         public const int PLAYER_SPEED_FOCUSING = 2;
-
+        public const string GAME_OVER_IMAGE = "./Assets/GAME_OVER.png";
         public const string SOUND_START = "fix me plz";
     }
 }
