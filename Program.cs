@@ -43,6 +43,7 @@ namespace Project_Cautious
             script["input"] = new List<Action>();
             script["update"] = new List<Action>();
             script["end"] = new List<Action>();
+            script["endInput"] = new List<Action>();
 
             DrawActorsAction drawActorsAction = new DrawActorsAction(outputService);
             script["output"].Add(drawActorsAction);
@@ -60,6 +61,8 @@ namespace Project_Cautious
             script["update"].Add(killPlayerAction);
             EndGameAction endGameAction = new EndGameAction();
             script["end"].Add(endGameAction);
+            PlayAgainInputAction playAgainInputAction = new PlayAgainInputAction(inputService);
+            script["endInput"].Add(playAgainInputAction);
 
             // Start up the game
             outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y, "Project Cautious", Constants.FRAME_RATE);

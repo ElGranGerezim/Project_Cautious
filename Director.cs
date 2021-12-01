@@ -71,6 +71,7 @@ namespace Project_Cautious{
             CueAction("end");
             while(_cast["banners"].Count > 0){
                 CueAction("output");
+                CueAction("endInput");
             }
             return false;
         }
