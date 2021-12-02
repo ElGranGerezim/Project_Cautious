@@ -13,7 +13,7 @@ namespace Project_Cautious.Cast{
             SetWidth(Constants.DEFAULT_SQUARE_SIZE);
             SetHeight(Constants.DEFAULT_SQUARE_SIZE);
             SetPosition(new Point(Constants.MAX_X / 2, Constants.MAX_Y - _height * 2));
-            _attack = FirePattern.getFirePattern(patternName.Single);
+            _attack = FirePattern.getFirePattern(patternName.Triple);
         }
 
         public override void TakeDamage()

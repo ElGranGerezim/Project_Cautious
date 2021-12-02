@@ -55,10 +55,12 @@ namespace Project_Cautious
             script["update"].Add(handleCollisionsAction);
             HandleOffScreenAction handleOffScreenAction = new HandleOffScreenAction();
             script["update"].Add(handleOffScreenAction);
-            RemoveDeadAction killPlayerAction = new RemoveDeadAction();
-            script["update"].Add(killPlayerAction);
+            RemoveDeadAction RemoveDeadAction = new RemoveDeadAction();
+            script["update"].Add(RemoveDeadAction);
             AttackAction attackAction = new AttackAction(inputService);
             script["update"].Add(attackAction);
+            SpawnEnemiesAction spawnEnemiesAction = new SpawnEnemiesAction();
+            script["update"].Add(spawnEnemiesAction);
             EndGameAction endGameAction = new EndGameAction();
             script["end"].Add(endGameAction);
             PlayAgainInputAction playAgainInputAction = new PlayAgainInputAction(inputService);
