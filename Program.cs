@@ -20,8 +20,6 @@ namespace Project_Cautious
             cast["player"].Add(player);
             
             cast["enemies"] = new List<Actor>();
-            Enemy enemy = new Enemy();
-            cast["enemies"].Add(enemy);
 
             cast["bullets"] = new List<Actor>();
 

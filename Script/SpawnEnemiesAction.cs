@@ -1,9 +1,6 @@
 using System.Collections.Generic;
-using System.Numerics;
 using Project_Cautious.Cast.Basics;
-using Project_Cautious.Cast;
-using Project_Cautious.Services;
-using Raylib_cs;
+using Project_Cautious.Cast.Enemies;
 
 namespace Project_Cautious.Script{
     public class SpawnEnemiesAction : Action {
@@ -47,14 +44,14 @@ namespace Project_Cautious.Script{
 
         private List<Enemy> wave1(){
             List<Enemy> wave = new List<Enemy>();
-            Enemy next = new Enemy();
+            Enemy next = new Mob();
             wave.Add(next);
             return wave;
         }
 
         private List<Enemy> wave2(){
             List<Enemy> wave = new List<Enemy>();
-            Enemy next = new Enemy();
+            Enemy next = new Bomber();
             wave.Add(next);
             return wave;
         } 

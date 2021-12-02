@@ -13,8 +13,8 @@ namespace Project_Cautious.Cast.Basics{
             _playerFriendly = playerFriendly;
             SetPosition(location);
             SetVelocity(velocity);
-            SetWidth(Constants.DEFAULT_SQUARE_SIZE/2);
-            SetHeight(Constants.DEFAULT_SQUARE_SIZE/2);
+            SetWidth(Constants.DEFAULT_BULLET_SIZE);
+            SetHeight(Constants.DEFAULT_BULLET_SIZE);
             _color = Raylib_cs.Color.WHITE;
         }
 
