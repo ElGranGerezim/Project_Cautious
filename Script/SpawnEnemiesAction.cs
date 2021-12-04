@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using Project_Cautious.Cast.Basics;
 using Project_Cautious.Cast.Enemies;
+using System;
 
 namespace Project_Cautious.Script{
     public class SpawnEnemiesAction : Action {
         private int _waveNumber = 0;
+        private List<Point> spawnPositions = new List<Point>();
         public SpawnEnemiesAction(){}
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
@@ -42,22 +44,51 @@ namespace Project_Cautious.Script{
             return wave;
         }
 
+        private void SetNewSpawnPositions(int numPositions){
+            Random rand = new Random();
+            spawnPositions.Clear();
+            for (int i = 0; i < numPositions; i++){
+                int spacing = (Constants.MAX_X / (numPositions + 1));
+                int baseX = spacing * (i+1);
+                int x = baseX + rand.Next(-(spacing / 2), spacing / 2);
+                int maxY = Constants.MAX_Y / 3;
+                int y = rand.Next(20, maxY);
+                spawnPositions.Add(new Point(x,y));
+            }
+        }
+
         private List<Enemy> wave1(){
+            SetNewSpawnPositions(2);
             List<Enemy> wave = new List<Enemy>();
-            Enemy next = new Mob();
-            wave.Add(next);
+            foreach(Point position in spawnPositions){
+                Enemy next = new Mob(position);
+                wave.Add(next);
+            }
             return wave;
         }
 
         private List<Enemy> wave2(){
+            SetNewSpawnPositions(4);
             List<Enemy> wave = new List<Enemy>();
-            Enemy next = new Bomber();
-            wave.Add(next);
+            foreach(Point position in spawnPositions){
+                Enemy next = new Mob(position);
+                wave.Add(next);
+            }
             return wave;
         } 
 
         private List<Enemy> wave3(){
             List<Enemy> wave = new List<Enemy>();
+            SetNewSpawnPositions(5);
+            for (int i = 0; i < spawnPositions.Count; i++){
+                Enemy next;
+                if (i % 2 == 0){
+                    next = new Mob(spawnPositions[i]);
+                } else {
+                    next = new Bomber(spawnPositions[i]);
+                }
+                wave.Add(next);
+            }
             return wave;
         }
         private List<Enemy> wave4(){
