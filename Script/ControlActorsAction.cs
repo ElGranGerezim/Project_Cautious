@@ -7,7 +7,7 @@ using Raylib_cs;
 
 namespace Project_Cautious.Script{
     /// <summary>
-    /// Action to convert user input to player action.
+    /// Action to handle constant updates to player every frame from input or timers.
     /// </summary>
     public class ControlActorsAction : Action {
         private InputService _inputService;
@@ -21,6 +21,7 @@ namespace Project_Cautious.Script{
             foreach (Player player in cast["player"]){
                 player.setFocusing(_inputService.IsFocusKeyPressed());
                 player.SetVelocity(_inputService.GetDirection());
+                player.tickIFrames();
             }
         }
     }

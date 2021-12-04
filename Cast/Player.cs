@@ -7,23 +7,25 @@ namespace Project_Cautious.Cast{
     /// </summary>
     public class Player : Gunner {
         private bool _focusing = false;
+        private int _iFrames = 0;
 
         public Player(){
-            _health = 1;
+            _health = 5;
             SetWidth(Constants.DEFAULT_SQUARE_SIZE);
             SetHeight(Constants.DEFAULT_SQUARE_SIZE);
             SetPosition(new Point(Constants.MAX_X / 2, Constants.MAX_Y - _height * 2));
-            _attack = patternName.Flak;
+            _attack = patternName.Shotgun;
         }
 
         public override void TakeDamage()
         {
+            _iFrames = Constants.FRAME_RATE * 3;
             _health--;
         }
 
         public override bool canGetHit()
         {
-            return true;
+            return _iFrames == 0;
         }
 
         public void setFocusing(bool focusInput) {
@@ -45,6 +47,15 @@ namespace Project_Cautious.Cast{
         public override Point GetCenterFire()
         {
             return new Point(_position.GetX() + (_width/2), GetTopEdge());
+        }
+
+        public void tickIFrames(){
+            if (_iFrames != 0){
+                _iFrames --;
+                _color = Raylib_cs.Color.DARKBLUE;
+            } else {
+                _color = Raylib_cs.Color.LIME;
+            }
         }
     }
 }
