@@ -10,7 +10,8 @@ namespace Project_Cautious{
         Triple,
         Shotgun,
         Laser,
-        Flak
+        Flak,
+        V
     }
 
     public static class FirePattern{
@@ -24,13 +25,13 @@ namespace Project_Cautious{
                 case patternName.Single:
                     pattern._cooldown = 60;
                     location = new Point(0,0);
-                    velocity = new Point(0,10);
+                    velocity = new Point(0,5);
                     pattern._pattern.Add(new Tuple<Point, Point>(location, velocity));
                     break;
                 case patternName.Triple:
                     pattern._cooldown = 80;
                     location = new Point(0,0);
-                    velocity = new Point(0,10);
+                    velocity = new Point(0,5);
                     pattern._pattern.Add(new Tuple<Point, Point>(location, velocity));
                     location = new Point(2 * Constants.DEFAULT_SQUARE_SIZE, 0);
                     pattern._pattern.Add(new Tuple<Point, Point>(location, velocity));
@@ -40,17 +41,17 @@ namespace Project_Cautious{
                 case patternName.Shotgun:
                     pattern._cooldown = 60;
                     location = new Point(0,0);
-                    velocity = new Point(0,10);
+                    velocity = new Point(0,5);
                     pattern._pattern.Add(new Tuple<Point, Point>(location, velocity));
-                    velocity = new Point(2,10);
+                    velocity = new Point(2,5);
                     pattern._pattern.Add(new Tuple<Point, Point>(location, velocity));
-                    velocity = new Point(-2, 10);
+                    velocity = new Point(-2, 5);
                     pattern._pattern.Add(new Tuple<Point, Point>(location,velocity));
                     break;
                 case patternName.Laser:
                     pattern._cooldown = 20;
                     location = new Point(0,0);
-                    velocity = new Point(0, 10);
+                    velocity = new Point(0, 5);
                     pattern._pattern.Add(new Tuple<Point, Point>(location,velocity));
                     location = new Point(0, 5);
                     pattern._pattern.Add(new Tuple<Point, Point>(location,velocity));
@@ -68,7 +69,14 @@ namespace Project_Cautious{
                         pattern._pattern.Add(GetFlak());
                     }
                     break;
-                
+                case patternName.V:
+                    pattern._cooldown = 80;
+                    location = new Point(0,0);
+                    velocity = new Point(2,5);
+                    pattern._pattern.Add(new Tuple<Point, Point>(location, velocity));
+                    velocity = new Point(-2, 5);
+                    pattern._pattern.Add(new Tuple<Point, Point>(location, velocity));
+                    break;
             }
             return pattern;
         }
