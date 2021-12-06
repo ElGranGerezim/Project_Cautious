@@ -14,7 +14,7 @@ namespace Project_Cautious{
         public const int DEFAULT_BANNER_WIDTH = 420;
         public const int DEFAULT_BANNER_HEIGHT = 100;
         public const int DEFAULT_PLAYER_SPEED = 8;
-        public const int PLAYER_SPEED_FOCUSING = 2;
+        public const int PLAYER_SPEED_FOCUSING = 4;
         public const string GAME_OVER_IMAGE = "./Assets/GAME_OVER.png";
         public const string SOUND_START = "fix me plz";
     }

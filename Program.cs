@@ -5,6 +5,7 @@ using Project_Cautious.Cast;
 using Project_Cautious.Cast.Basics;
 using Project_Cautious.Script;
 using Project_Cautious.Services;
+using Project_Cautious.UI;
 
 namespace Project_Cautious
 {
@@ -26,6 +27,13 @@ namespace Project_Cautious
             cast["banners"] = new List<Actor>();
             Banner endBanner = new Banner(false, "GAME OVER");
             cast["banners"].Add(endBanner);
+
+            cast["counters"] = new List<Actor>();
+            Counter waveCounter = new Counter("Wave",0,new Point(0,0));
+            cast["counters"].Add(waveCounter);
+            Counter lifeCounter = new Counter("Health",player.GetHealth(), new Point(0,0));
+            lifeCounter.SetPosition(new Point(Constants.MAX_X - lifeCounter.GetWidth(), 0));
+            cast["counters"].Add(lifeCounter);
 
             // Create the script
             Dictionary<string, List<Action>> script = new Dictionary<string, List<Action>>();

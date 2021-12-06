@@ -11,6 +11,7 @@ namespace Project_Cautious.Script{
     /// </summary>
     public class ControlActorsAction : Action {
         private InputService _inputService;
+        private Point _playerPosition;
         
         public ControlActorsAction(InputService inputService){
             _inputService = inputService;
@@ -22,6 +23,11 @@ namespace Project_Cautious.Script{
                 player.setFocusing(_inputService.IsFocusKeyPressed());
                 player.SetVelocity(_inputService.GetDirection());
                 player.tickIFrames();
+                _playerPosition = player.GetPosition();
+            }
+
+            foreach (Enemy enemy in cast["enemies"]){
+                enemy.Move(_playerPosition);
             }
         }
     }

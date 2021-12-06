@@ -29,13 +29,13 @@ namespace Project_Cautious{
                     pattern._pattern.Add(new Tuple<Point, Point>(location, velocity));
                     break;
                 case patternName.Triple:
-                    pattern._cooldown = 80;
+                    pattern._cooldown = 100;
                     location = new Point(0,0);
-                    velocity = new Point(0,5);
+                    velocity = new Point(0,3);
                     pattern._pattern.Add(new Tuple<Point, Point>(location, velocity));
-                    location = new Point(2 * Constants.DEFAULT_SQUARE_SIZE, 0);
+                    location = new Point(3 * Constants.DEFAULT_SQUARE_SIZE, 0);
                     pattern._pattern.Add(new Tuple<Point, Point>(location, velocity));
-                    location = new Point(-(2*Constants.DEFAULT_SQUARE_SIZE), 0);
+                    location = new Point(-(3*Constants.DEFAULT_SQUARE_SIZE), 0);
                     pattern._pattern.Add(new Tuple<Point, Point>(location, velocity));
                     break;
                 case patternName.Shotgun:

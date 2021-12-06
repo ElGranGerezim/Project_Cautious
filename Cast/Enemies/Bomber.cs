@@ -9,5 +9,14 @@ namespace Project_Cautious.Cast.Enemies{
             _color = Raylib_cs.Color.RED;
             SetPosition(position);
         }
+
+        public override void Move(Point playerPos)
+        {
+            if (playerPos.GetX() > GetX()){
+                SetVelocity(new Point(1,0));
+            } else if (playerPos.GetX() < GetX()){
+                SetVelocity(new Point(-1,0));
+            }
+        }
     }
 }

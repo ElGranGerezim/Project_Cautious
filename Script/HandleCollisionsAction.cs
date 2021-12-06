@@ -3,6 +3,7 @@ using Raylib_cs;
 using Project_Cautious.Services;
 using Project_Cautious.Cast.Basics;
 using Project_Cautious.Cast;
+using Project_Cautious.UI;
 namespace Project_Cautious.Script{
     public class HandleCollisionsAction : Action{
         /// <summary>
@@ -31,6 +32,11 @@ namespace Project_Cautious.Script{
                     foreach (Player player in cast["player"]){
                         if (_physicsService.IsCollision(player, bullet)){
                             player.TakeDamage();
+                            foreach (Counter counter in cast["counters"]){
+                                if (counter.GetText() == "Health"){
+                                    counter.CountDown();
+                                }
+                            }
                             bulletsToRemove.Add(bullet);
                         }
                     }

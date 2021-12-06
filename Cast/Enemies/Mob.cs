@@ -9,5 +9,8 @@ namespace Project_Cautious.Cast.Enemies{
             _color = Raylib_cs.Color.ORANGE;
             SetPosition(position);
         }
+
+        public override void Move(Point playerPos){ //It doesnt move
+        }
     }
 }

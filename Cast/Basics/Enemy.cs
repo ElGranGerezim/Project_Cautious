@@ -21,5 +21,7 @@ namespace Project_Cautious.Cast.Basics{
         {
             _health --;
         }
+
+        public abstract void Move(Point playerPos);
     }
 }

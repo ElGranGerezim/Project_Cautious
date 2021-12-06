@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Project_Cautious.Cast.Basics;
 using Project_Cautious.Cast.Enemies;
+using Project_Cautious.UI;
 using System;
 
 namespace Project_Cautious.Script{
@@ -14,6 +15,11 @@ namespace Project_Cautious.Script{
             if (enemyCount == 0){
                 foreach (Enemy next in GetNextWave()){
                     cast["enemies"].Add(next);
+                }
+                foreach(Counter counter in cast["counters"]){
+                    if (counter.GetText() == "Wave"){
+                        counter.CountUp();
+                    }
                 }
             }
         }
@@ -93,10 +99,26 @@ namespace Project_Cautious.Script{
         }
         private List<Enemy> wave4(){
             List<Enemy> wave = new List<Enemy>();
+            SetNewSpawnPositions(6);
+            for (int i = 0; i < spawnPositions.Count; i++){
+                Enemy next = new Alien(spawnPositions[i]);
+                wave.Add(next);
+            }
             return wave;
         }
         private List<Enemy> wave5(){
             List<Enemy> wave = new List<Enemy>();
+            SetNewSpawnPositions(5);
+            Enemy next = new Alien(spawnPositions[0]);
+            wave.Add(next);
+            next = new Bomber(spawnPositions[1]);
+            wave.Add(next);
+            next = new Alien(spawnPositions[2]);
+            wave.Add(next);
+            next = new Bomber(spawnPositions[3]);
+            wave.Add(next);
+            next = new Alien(spawnPositions[4]);
+            wave.Add(next);
             return wave;
         }
         private List<Enemy> wave6(){

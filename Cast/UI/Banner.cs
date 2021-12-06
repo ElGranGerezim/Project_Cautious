@@ -1,7 +1,7 @@
 using System;
 using Project_Cautious.Cast.Basics;
 
-namespace Project_Cautious.Cast{
+namespace Project_Cautious.UI{
     public class Banner : Actor {
         public Banner(bool isVisible, string text){
             SetVisibility(isVisible);
