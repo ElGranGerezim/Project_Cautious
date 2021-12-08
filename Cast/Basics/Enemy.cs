@@ -8,8 +8,6 @@ namespace Project_Cautious.Cast.Basics{
     /// </summary>
     public abstract class Enemy : Gunner {
         public Enemy(){
-            SetWidth(Constants.DEFAULT_SQUARE_SIZE + (Constants.DEFAULT_SQUARE_SIZE / 2));
-            SetHeight(Constants.DEFAULT_SQUARE_SIZE + (Constants.DEFAULT_SQUARE_SIZE / 2));
         }
 
         public override bool canGetHit()

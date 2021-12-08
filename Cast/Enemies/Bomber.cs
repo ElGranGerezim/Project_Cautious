@@ -8,6 +8,9 @@ namespace Project_Cautious.Cast.Enemies{
             _attack = patternName.Triple;
             _color = Raylib_cs.Color.RED;
             SetPosition(position);
+            SetImage(Constants.BOMBER_IMAGE);
+            SetWidth(79);
+            SetHeight(63);
         }
 
         public override void Move(Point playerPos)

@@ -16,6 +16,10 @@ namespace Project_Cautious{
         public const int DEFAULT_PLAYER_SPEED = 8;
         public const int PLAYER_SPEED_FOCUSING = 4;
         public const string GAME_OVER_IMAGE = "./Assets/GAME_OVER.png";
+        public const string PLAYER_IMAGE = "./Assets/orange_spaceship.png";
+        public const string MOB_IMAGE = "./Assets/red_spaceship.png";
+        public const string BOMBER_IMAGE = "./Assets/Bomber.png";
+        public const string ALIEN_IMAGE = "./Assets/blue_spaceship.png";
         public const string SOUND_START = "fix me plz";
     }
 }

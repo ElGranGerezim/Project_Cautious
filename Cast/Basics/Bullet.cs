@@ -11,10 +11,11 @@ namespace Project_Cautious.Cast.Basics{
         public Bullet(Point location, Point velocity, bool playerFriendly = false){
             _isVisible = true;
             _playerFriendly = playerFriendly;
-            SetPosition(location);
             SetVelocity(velocity);
             SetWidth(Constants.DEFAULT_BULLET_SIZE);
             SetHeight(Constants.DEFAULT_BULLET_SIZE);
+            Point actualLocation = location.Add(new Point(-(_width/2), 0));
+            SetPosition(actualLocation);
             _color = Raylib_cs.Color.WHITE;
         }
 

@@ -11,8 +11,9 @@ namespace Project_Cautious.Cast{
 
         public Player(){
             _health = 5;
-            SetWidth(10);
-            SetHeight(Constants.DEFAULT_SQUARE_SIZE);
+            SetImage(Constants.PLAYER_IMAGE);
+            SetWidth(70);
+            SetHeight(47);
             SetPosition(new Point(Constants.MAX_X / 2, Constants.MAX_Y - _height * 2));
             _attack = patternName.Shotgun;
         }
