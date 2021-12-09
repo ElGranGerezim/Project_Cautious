@@ -12,9 +12,12 @@ namespace Project_Cautious.Script{
             List<Actor> playerToRemove = new List<Actor>();
             List<Actor> enemyToRemove = new List<Actor>();
 
-            foreach (Player player in cast["player"]){
-                if (player.GetHealth() <= 0){
-                    playerToRemove.Add(player);
+            foreach (Actor actor in cast["player"]){
+                if (actor is Player){
+                    Player player = (Player) actor;
+                    if (player.GetHealth() <= 0){
+                        playerToRemove.Add(player);
+                    }
                 }
             }
 

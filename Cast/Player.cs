@@ -11,9 +11,8 @@ namespace Project_Cautious.Cast{
 
         public Player(){
             _health = 5;
-            SetImage(Constants.PLAYER_IMAGE);
-            SetWidth(70);
-            SetHeight(47);
+            SetWidth(16);
+            SetHeight(16);
             SetPosition(new Point(Constants.MAX_X / 2, Constants.MAX_Y - _height * 2));
             _attack = patternName.Shotgun;
         }
@@ -40,8 +39,10 @@ namespace Project_Cautious.Cast{
 
         private int getCurrentSpeed(){
             if (_focusing){
+                _isVisible = true;
                 return Constants.PLAYER_SPEED_FOCUSING;
             }
+            _isVisible = false;
             return Constants.DEFAULT_PLAYER_SPEED;
         }
 
@@ -53,9 +54,9 @@ namespace Project_Cautious.Cast{
         public void tickIFrames(){
             if (_iFrames != 0){
                 _iFrames --;
-                _color = Raylib_cs.Color.DARKBLUE;
+                _color = Raylib_cs.Color.RED;
             } else {
-                _color = Raylib_cs.Color.LIME;
+                _color = Raylib_cs.Color.DARKBLUE;
             }
         }
     }

@@ -18,6 +18,8 @@ namespace Project_Cautious
 
             cast["player"] = new List<Actor>();
             Player player = new Player();
+            PlayerOverlay playerOverlay = new PlayerOverlay(player);
+            cast["player"].Add(playerOverlay);
             cast["player"].Add(player);
             
             cast["enemies"] = new List<Actor>();
@@ -53,10 +55,11 @@ namespace Project_Cautious
             script["output"].Add(drawActorsAction);
 
             // TODO: Add additional actions here to handle the input, move the actors, handle collisions, etc.
-            MoveActorsAction moveActorsAction = new MoveActorsAction();
-            script["update"].Add(moveActorsAction);
             ControlActorsAction controlActorsAction = new ControlActorsAction(inputService);
             script["input"].Add(controlActorsAction);
+            
+            MoveActorsAction moveActorsAction = new MoveActorsAction();
+            script["update"].Add(moveActorsAction);
             HandleCollisionsAction handleCollisionsAction = new HandleCollisionsAction(physicsService, audioService);
             script["update"].Add(handleCollisionsAction);
             HandleOffScreenAction handleOffScreenAction = new HandleOffScreenAction();
@@ -67,8 +70,12 @@ namespace Project_Cautious
             script["update"].Add(attackAction);
             SpawnEnemiesAction spawnEnemiesAction = new SpawnEnemiesAction();
             script["update"].Add(spawnEnemiesAction);
+            UpdatePlayerOverlay updatePlayerOverlay = new UpdatePlayerOverlay();
+            script["update"].Add(updatePlayerOverlay);
+
             EndGameAction endGameAction = new EndGameAction();
             script["end"].Add(endGameAction);
+
             PlayAgainInputAction playAgainInputAction = new PlayAgainInputAction(inputService);
             script["endInput"].Add(playAgainInputAction);
 

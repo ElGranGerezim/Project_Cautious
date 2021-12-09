@@ -63,7 +63,7 @@ namespace Project_Cautious{
         }
 
         public bool gameOver(){
-            if (_cast["player"].Count <= 0){ return true; }
+            if (_cast["player"].Count <= 1){ return true; }
             return false;
         }
 

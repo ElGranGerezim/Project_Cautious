@@ -31,18 +31,21 @@ namespace Project_Cautious.Script{
                     }
                 }
 
-                foreach(Gunner player in cast["player"]){
-                    if (_inputService.IsFireKeyPressed() && player.CanFire()){
-                        AttackPattern attack = player.Attack();
-                        foreach (Tuple<Point,Point> template in attack._pattern){
-                            Point location = player.GetCenterFire().Add(template.Item1);
-                            Point velocity = new Point(template.Item2.GetX(), template.Item2.GetY() * 2);
-                            velocity.invertY();
-                            Bullet next = new Bullet(location, velocity, true);
-                            cast["bullets"].Add(next);
+                foreach(Actor actor in cast["player"]){
+                    if (actor is Player){
+                        Player player = (Player) actor;
+                        if (_inputService.IsFireKeyPressed() && player.CanFire()){
+                            AttackPattern attack = player.Attack();
+                            foreach (Tuple<Point,Point> template in attack._pattern){
+                                Point location = player.GetCenterFire().Add(template.Item1);
+                                Point velocity = new Point(template.Item2.GetX(), template.Item2.GetY() * 2);
+                                velocity.invertY();
+                                Bullet next = new Bullet(location, velocity, true);
+                                cast["bullets"].Add(next);
+                            }
+                        } else {
+                            player.UpdateLastFire();
                         }
-                    } else {
-                        player.UpdateLastFire();
                     }
                 }
             }

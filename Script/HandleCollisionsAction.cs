@@ -29,15 +29,18 @@ namespace Project_Cautious.Script{
                         }
                     }
                 } else{
-                    foreach (Player player in cast["player"]){
-                        if (_physicsService.IsCollision(player, bullet)){
-                            player.TakeDamage();
-                            foreach (Counter counter in cast["counters"]){
-                                if (counter.GetText() == "Health"){
-                                    counter.CountDown();
+                    foreach (Actor actor in cast["player"]){
+                        if (actor is Player){
+                            Player player = (Player) actor;
+                            if (_physicsService.IsCollision(player, bullet)){
+                                player.TakeDamage();
+                                foreach (Counter counter in cast["counters"]){
+                                    if (counter.GetText() == "Health"){
+                                        counter.CountDown();
+                                    }
                                 }
-                            }
-                            bulletsToRemove.Add(bullet);
+                                bulletsToRemove.Add(bullet);
+                            }   
                         }
                     }
                 }

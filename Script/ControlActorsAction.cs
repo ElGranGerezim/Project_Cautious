@@ -19,11 +19,17 @@ namespace Project_Cautious.Script{
 
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
-            foreach (Player player in cast["player"]){
-                player.setFocusing(_inputService.IsFocusKeyPressed());
-                player.SetVelocity(_inputService.GetDirection());
-                player.tickIFrames();
-                _playerPosition = player.GetPosition();
+            foreach (Actor actor in cast["player"]){
+                if (actor is Player){
+                    Player player = (Player) actor;
+                    player.setFocusing(_inputService.IsFocusKeyPressed());
+                    player.SetVelocity(_inputService.GetDirection());
+                    player.tickIFrames();
+                    _playerPosition = player.GetPosition();
+                } else {
+                    PlayerOverlay playerOverlay = (PlayerOverlay) actor;
+                    playerOverlay.HoldPosition();
+                }
             }
 
             foreach (Enemy enemy in cast["enemies"]){
