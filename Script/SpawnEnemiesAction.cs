@@ -124,7 +124,7 @@ namespace Project_Cautious.Script{
         }
         private List<Enemy> newRandomWave(){
             List<Enemy> wave = new List<Enemy>();
-            int limit = 5 + (_waveNumber / 5);
+            int limit = 5 + (_waveNumber / 6);
             SetNewSpawnPositions(limit);
             for(int i = 0; i < limit; i++){
                 wave.Add(getRandomEnemy(i));
@@ -135,30 +135,32 @@ namespace Project_Cautious.Script{
         private Enemy getRandomEnemy(int i){
             switch(rand.Next(0,4)){
                 case 0:
-                if (_waveNumber < 10){
+                if (_waveNumber < 6){
                     return new Mob(spawnPositions[i]);    
-                } else if (_waveNumber < 20){
+                } else if (_waveNumber < 12){
                     return new FastMob(spawnPositions[i]);
                 } else {
                     return getRandomEnemy(i);
                 }
                 case 1:
-                if (_waveNumber < 15){
+                if (_waveNumber < 10){
                     return new Turret(spawnPositions[i]);
                 } else {
                     return new Bomber(spawnPositions[i]);
                 }
                 case 2:
-                if (_waveNumber < 25){
+                if (_waveNumber < 12){
                     return new Alien(spawnPositions[i]);
                 } else {
                     return new AlienFast(spawnPositions[i]);
                 }
                 case 3:
-                if (_waveNumber < 30){
-                    return new Turret(spawnPositions[i]);
-                } else {
+                if (_waveNumber < 10){
+                    return getRandomEnemy(i);
+                } else if (_waveNumber < 18){
                     return new TurretFast(spawnPositions[i]);
+                } else {
+                    return new FastBomber(spawnPositions[i]);
                 }
                 default:
                 return getRandomEnemy(i);
