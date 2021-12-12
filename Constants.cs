@@ -2,8 +2,8 @@ using System;
 
 namespace Project_Cautious{
     public static class Constants{
-        public const int MAX_X = 800;
-        public const int MAX_Y = 600;
+        public const int MAX_X = 1600;
+        public const int MAX_Y = 900;
         public const int CENTER_X = MAX_X / 2;
         public const int CENTER_Y = MAX_Y / 2;
         public const int FRAME_RATE = 30;
@@ -21,6 +21,14 @@ namespace Project_Cautious{
         public const string MOB_IMAGE = "./Assets/red_spaceship.png";
         public const string BOMBER_IMAGE = "./Assets/Bomber.png";
         public const string ALIEN_IMAGE = "./Assets/blue_spaceship.png";
-        public const string SOUND_START = "fix me plz";
+        public const string SOUND_START = "./Assets/start.wav";
+        public const string GAME_BGM = "./Assets/game_bgm.wav";
+        public const string MAIN_BGM = "./Assets/main_bgm.wav";
+        public const string LOSE_BGM = "./Assets/lose_bgm.wav";
+        public const string SOUND_PLAYER_DIE = "./Assets/die.wav";
+        public const string SOUND_ENEMY_DIE = "./Assets/enemy_die.wav";
+        public const string SOUND_PLAYER_HIT = "./Assets/player_hit.wav";
+        public const string BACKGROUND_TITLE = "./Assets/main_background.png";
+        public const string BACKGROUND_MAIN = "./Assets/game_background.png";
     }
 }

@@ -7,6 +7,7 @@ using System;
 namespace Project_Cautious{
     public enum patternName{
         Single,
+        SingleFast,
         Triple,
         Shotgun,
         Laser,
@@ -23,13 +24,19 @@ namespace Project_Cautious{
             Point velocity;
             switch (name){
                 case patternName.Single:
+                    pattern._cooldown = 120;
+                    location = new Point(0,0);
+                    velocity = new Point(0,5);
+                    pattern._pattern.Add(new Tuple<Point, Point>(location, velocity));
+                    break;
+                case patternName.SingleFast:
                     pattern._cooldown = 60;
                     location = new Point(0,0);
                     velocity = new Point(0,5);
                     pattern._pattern.Add(new Tuple<Point, Point>(location, velocity));
                     break;
                 case patternName.Triple:
-                    pattern._cooldown = 100;
+                    pattern._cooldown = 120;
                     location = new Point(0,0);
                     velocity = new Point(0,3);
                     pattern._pattern.Add(new Tuple<Point, Point>(location, velocity));

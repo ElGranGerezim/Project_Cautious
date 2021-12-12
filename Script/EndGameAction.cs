@@ -9,11 +9,14 @@ using Project_Cautious.UI;
 namespace Project_Cautious.Script{
     public class EndGameAction : Action{
 
-        public EndGameAction(){
+        AudioService _audioService;
+        public EndGameAction(AudioService audioService){
+            _audioService = audioService;
         }
 
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
+            _audioService.SwitchBGM(Constants.LOSE_BGM);
             foreach(Banner banner in cast["banners"]){
                 banner.SetVisibility(!banner.GetIsVisible());
             }

@@ -9,6 +9,7 @@ namespace Project_Cautious.Services{
     /// </summary>
     public class AudioService
     {
+        private string currentBGM;
         private Dictionary<string, Raylib_cs.Sound> _sounds
             = new Dictionary<string, Raylib_cs.Sound>();
         
@@ -32,6 +33,18 @@ namespace Project_Cautious.Services{
             Raylib.PlaySound(sound);
         }
 
+        public bool IsBGMPlaying(){
+            if (_sounds.ContainsKey(currentBGM)){
+                Raylib_cs.Sound sound = _sounds[currentBGM];
+                return Raylib.IsSoundPlaying(sound);
+            } else
+            return false;
+        }
+
+        public void PlayBGM(){
+            PlaySound(currentBGM);
+        }
+
         /// <summary>
         /// Initializes the audio device.
         /// </summary>
@@ -48,5 +61,16 @@ namespace Project_Cautious.Services{
             Raylib.CloseAudioDevice();
         }
  
+        public void SwitchBGM(string newBGM){
+            if (currentBGM is not null){
+                if (_sounds.ContainsKey(currentBGM)){
+                    if (Raylib.IsSoundPlaying(_sounds[currentBGM])){
+                        Raylib.StopSound(_sounds[currentBGM]);
+                    }
+                }
+            }
+            currentBGM = newBGM;
+            PlaySound(currentBGM);
+        }
    }
 }

@@ -34,6 +34,7 @@ namespace Project_Cautious.Script{
                             Player player = (Player) actor;
                             if (_physicsService.IsCollision(player, bullet)){
                                 player.TakeDamage();
+                                _audioService.PlaySound(Constants.SOUND_PLAYER_HIT);
                                 foreach (Counter counter in cast["counters"]){
                                     if (counter.GetText() == "Health"){
                                         counter.CountDown();

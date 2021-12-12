@@ -2,11 +2,15 @@ using System.Collections.Generic;
 using System.Numerics;
 using Project_Cautious.Cast.Basics;
 using Project_Cautious.Cast;
+using Project_Cautious.Services;
 using Raylib_cs;
 
 namespace Project_Cautious.Script{
     public class RemoveDeadAction : Action{
-        public RemoveDeadAction(){}
+        AudioService _audioService;
+        public RemoveDeadAction(AudioService audioService){
+            _audioService = audioService;
+        }
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
             List<Actor> playerToRemove = new List<Actor>();
@@ -17,6 +21,7 @@ namespace Project_Cautious.Script{
                     Player player = (Player) actor;
                     if (player.GetHealth() <= 0){
                         playerToRemove.Add(player);
+                        _audioService.PlaySound(Constants.SOUND_PLAYER_DIE);
                     }
                 }
             }
@@ -24,6 +29,7 @@ namespace Project_Cautious.Script{
             foreach (Enemy enemy in cast["enemies"]){
                 if (enemy.GetHealth() <= 0){
                     enemyToRemove.Add(enemy);
+                    _audioService.PlaySound(Constants.SOUND_ENEMY_DIE);
                 }
             }
             

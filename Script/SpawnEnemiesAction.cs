@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using Project_Cautious.Cast.Basics;
 using Project_Cautious.Cast.Enemies;
+using Project_Cautious.Cast;
 using Project_Cautious.UI;
 using System;
 
 namespace Project_Cautious.Script{
     public class SpawnEnemiesAction : Action {
-        private int _waveNumber = 0;
+        private int _waveNumber = 8;
+        Random rand = new Random();
         private List<Point> spawnPositions = new List<Point>();
         public SpawnEnemiesAction(){}
         public override void Execute(Dictionary<string, List<Actor>> cast)
@@ -42,8 +44,8 @@ namespace Project_Cautious.Script{
                 case 4:
                 wave = wave5();
                 break;
-                case 5:
-                wave = wave6();
+                default:
+                wave = newRandomWave();
                 break;
             }
             _waveNumber++;
@@ -51,7 +53,6 @@ namespace Project_Cautious.Script{
         }
 
         private void SetNewSpawnPositions(int numPositions){
-            Random rand = new Random();
             spawnPositions.Clear();
             for (int i = 0; i < numPositions; i++){
                 int spacing = (Constants.MAX_X / (numPositions + 1));
@@ -121,9 +122,30 @@ namespace Project_Cautious.Script{
             wave.Add(next);
             return wave;
         }
-        private List<Enemy> wave6(){
+        private List<Enemy> newRandomWave(){
             List<Enemy> wave = new List<Enemy>();
+            int limit = 5 + (_waveNumber / 5);
+            SetNewSpawnPositions(limit);
+            for(int i = 0; i < limit; i++){
+                wave.Add(getRandomEnemy(i));
+            }
             return wave;
+        }
+
+        private Enemy getRandomEnemy(int i){
+            switch(rand.Next(0,3)){
+                case 0:
+                if (_waveNumber < 10){
+                    return new Mob(spawnPositions[i]);    
+                }
+                return new Mob(spawnPositions[i]);
+                case 1:
+                return new Bomber(spawnPositions[i]);
+                case 2:
+                return new Alien(spawnPositions[i]);
+                default:
+                return getRandomEnemy(i);
+            }
         }
     }
 }
