@@ -7,7 +7,7 @@ using System;
 
 namespace Project_Cautious.Script{
     public class SpawnEnemiesAction : Action {
-        private int _waveNumber = 8;
+        private int _waveNumber = 0;
         Random rand = new Random();
         private List<Point> spawnPositions = new List<Point>();
         public SpawnEnemiesAction(){}
@@ -92,7 +92,7 @@ namespace Project_Cautious.Script{
                 if (i % 2 == 0){
                     next = new Mob(spawnPositions[i]);
                 } else {
-                    next = new Bomber(spawnPositions[i]);
+                    next = new Turret(spawnPositions[i]);
                 }
                 wave.Add(next);
             }
@@ -112,11 +112,11 @@ namespace Project_Cautious.Script{
             SetNewSpawnPositions(5);
             Enemy next = new Alien(spawnPositions[0]);
             wave.Add(next);
-            next = new Bomber(spawnPositions[1]);
+            next = new Turret(spawnPositions[1]);
             wave.Add(next);
             next = new Alien(spawnPositions[2]);
             wave.Add(next);
-            next = new Bomber(spawnPositions[3]);
+            next = new Turret(spawnPositions[3]);
             wave.Add(next);
             next = new Alien(spawnPositions[4]);
             wave.Add(next);
@@ -133,16 +133,33 @@ namespace Project_Cautious.Script{
         }
 
         private Enemy getRandomEnemy(int i){
-            switch(rand.Next(0,3)){
+            switch(rand.Next(0,4)){
                 case 0:
                 if (_waveNumber < 10){
                     return new Mob(spawnPositions[i]);    
+                } else if (_waveNumber < 20){
+                    return new FastMob(spawnPositions[i]);
+                } else {
+                    return getRandomEnemy(i);
                 }
-                return new Mob(spawnPositions[i]);
                 case 1:
-                return new Bomber(spawnPositions[i]);
+                if (_waveNumber < 15){
+                    return new Turret(spawnPositions[i]);
+                } else {
+                    return new Bomber(spawnPositions[i]);
+                }
                 case 2:
-                return new Alien(spawnPositions[i]);
+                if (_waveNumber < 25){
+                    return new Alien(spawnPositions[i]);
+                } else {
+                    return new AlienFast(spawnPositions[i]);
+                }
+                case 3:
+                if (_waveNumber < 30){
+                    return new Turret(spawnPositions[i]);
+                } else {
+                    return new TurretFast(spawnPositions[i]);
+                }
                 default:
                 return getRandomEnemy(i);
             }

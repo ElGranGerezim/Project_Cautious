@@ -2,8 +2,8 @@ using System;
 using Project_Cautious.Cast.Basics;
 
 namespace Project_Cautious.Cast{
-    public class FastSingle : Enemy{
-        public FastSingle(Point position){
+    public class FastMob : Enemy{
+        public FastMob(Point position){
             _health = 2;
             _attack = patternName.SingleFast;
             _color = Raylib_cs.Color.ORANGE;

@@ -21,6 +21,7 @@ namespace Project_Cautious{
         public const string MOB_IMAGE = "./Assets/red_spaceship.png";
         public const string BOMBER_IMAGE = "./Assets/Bomber.png";
         public const string ALIEN_IMAGE = "./Assets/blue_spaceship.png";
+        public const string TURRET_IMAGE = "./Assets/Turret.png";
         public const string SOUND_START = "./Assets/start.wav";
         public const string GAME_BGM = "./Assets/game_bgm.wav";
         public const string MAIN_BGM = "./Assets/main_bgm.wav";

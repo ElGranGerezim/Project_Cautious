@@ -12,7 +12,8 @@ namespace Project_Cautious{
         Shotgun,
         Laser,
         Flak,
-        V
+        V,
+        Vfast
     }
 
     public static class FirePattern{
@@ -36,7 +37,7 @@ namespace Project_Cautious{
                     pattern._pattern.Add(new Tuple<Point, Point>(location, velocity));
                     break;
                 case patternName.Triple:
-                    pattern._cooldown = 120;
+                    pattern._cooldown = 100;
                     location = new Point(0,0);
                     velocity = new Point(0,3);
                     pattern._pattern.Add(new Tuple<Point, Point>(location, velocity));
@@ -77,6 +78,14 @@ namespace Project_Cautious{
                     }
                     break;
                 case patternName.V:
+                    pattern._cooldown = 120;
+                    location = new Point(0,0);
+                    velocity = new Point(2,5);
+                    pattern._pattern.Add(new Tuple<Point, Point>(location, velocity));
+                    velocity = new Point(-2, 5);
+                    pattern._pattern.Add(new Tuple<Point, Point>(location, velocity));
+                    break;
+                case patternName.Vfast:
                     pattern._cooldown = 80;
                     location = new Point(0,0);
                     velocity = new Point(2,5);
